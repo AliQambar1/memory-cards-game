@@ -27,7 +27,7 @@ START:
 
 When the user clicks Start button:
 game variables:
- totalPairs = 3
+ totalPairs = 4
  matchedPairs = 0
  timeLimit = 60 seconds
 
