@@ -1,7 +1,17 @@
 /*-------------- Constants -------------*/
 const totalPairs = 6;
 
-const cardArray = [
+
+const soundGame = [
+    {name: "correctMp", sound: new Audio("Sounds/mixkit-correct-positive-notification-957.wav")},
+    {name: "victorySound", sound: new Audio("Sounds/mixkit-correct-answer-reward-952.wav")},
+    {name: "losingSound", sound: new Audio("Sounds/fail-144746.mp3")},
+    {name: "incorrectMp", sound: new Audio("Sounds/error-08-206492.mp3")},
+
+];
+
+
+const cardArray = [        
   { name: "mushroom", image: "images/image-removebg-preview (1).png" },
   { name: "frog", image: "images/image-removebg-preview (2).png" },
   { name: "tree", image: "images/image-removebg-preview (3).png" },
@@ -34,6 +44,7 @@ shuffle(gameCards);
 
 /*-------------- Functions -------------*/
 
+/// function for mixing the cards
 function shuffle(array) {
   let currentIndex = array.length;
 
@@ -67,6 +78,7 @@ const startTimer = () =>{
         if(timeLimit <=0){
             clearInterval(timer);
             lockBoard = true;
+            soundGame[2].sound.play();
             messageDisplay.textContent = "Unfortunately, you lost!";
         }
     }, 1000)
@@ -86,11 +98,15 @@ const check = () =>{
     if(isMatch){
         matchedPairs++;
         mpDisplay.textContent = matchedPairs;
+        soundGame[0].sound.play();
         rest();
 
 
         if (matchedPairs === totalPairs){
             endGame();
+            soundGame[1].sound.play();
+            
+            
         }
 
     } else {
@@ -98,6 +114,7 @@ const check = () =>{
         setTimeout(() =>{
         firstCard.card.classList.remove('flipped')
         secondCard.card.classList.remove('flipped')
+        soundGame[3].sound.play();
         rest();
         },1000);
     }
@@ -144,6 +161,7 @@ startBtn.addEventListener("click", () =>{
     messageDisplay.textContent = "";
     clearInterval(timer);
     lockBoard = true;
+    
 
     cards.forEach((card, index) => {
         card.classList.remove("flipped");

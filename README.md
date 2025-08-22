@@ -27,9 +27,9 @@ START:
 
 When the user clicks Start button:
 game variables:
- totalPairs = 4
+ totalPairs = 6
  matchedPairs = 0
- timeLimit = 60 seconds
+ timeLimit = 30 seconds
 
 1- HIDE landing page
 2- Load 8 cards (4 matching paris) with images
@@ -51,17 +51,31 @@ Whil time remaining > 0 and matchedPairs < totalPairs:
    Increment matchedPairs by 1 
 
    Else:
-   Wait 1 second
+   Wait 2 second
    Turn bothe cards face-down
    clear selection list
 
    3- IF matchedPairs == totalPairs:
     
     Display "You Win" message
-    Offer "Play again" option
     Stop game 
 
     4- If time remainig === 0 And matchedPairs < totalPairs:
     Display "You Lose" message
-    offer "Play again" option
     Stop game
+
+    
+    
+    
+    
+    
+    # sources
+    For Images: https://www.pinterest.com/
+    For sounds: https://mixkit.co/
+
+
+
+    Technologies Used: HTML, CSS, and JavaScript
+
+
+   Next Steps: Planning to add different difficulty
